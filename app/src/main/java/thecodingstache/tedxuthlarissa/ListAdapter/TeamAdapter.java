@@ -11,53 +11,51 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import thecodingstache.tedxuthlarissa.Fragment.SpeakersFragment;
-import thecodingstache.tedxuthlarissa.Model.Speakers;
+import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
+import thecodingstache.tedxuthlarissa.Fragment.TeamFragment;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ListViewHolder> {
-    private List<Team> mSpeakersList;
-    private SpeakersFragment mContext;
+    private List<Team> mTeamList;
+    private CurrationFragment mContext;
 
-    public TeamAdapter(List<Team> speakersList, SpeakersFragment mContext) {
-        this.mSpeakersList = speakersList;
+    public TeamAdapter(List<Team> mTeamList, CurrationFragment mContext) {
+        this.mTeamList = mTeamList;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_speakers, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_list, parent, false);
         return new ListViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Team team = mSpeakersList.get(position);
+        Team team = mTeamList.get(position);
         holder.name.setText("Full Name\n"+ team.getName());
-        holder.occupation.setText("Title\n"+ team.getTitle());
-        holder.speakers.setImageResource(team.getPhoto());
+        holder.title.setText("Title\n"+ team.getTitle());
+        holder.team.setImageResource(team.getPhoto());
     }
 
 
     @Override
     public int getItemCount() {
-        return mSpeakersList.size();
+        return mTeamList.size();
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView speakers;
+        private ImageView team;
         private TextView name;
-        private TextView occupation;
         private TextView title;
 
         public ListViewHolder(View view) {
             super(view);
-            speakers = view.findViewById(R.id.speakers);
+            team = view.findViewById(R.id.curration);
             name = view.findViewById(R.id.name);
-            occupation = view.findViewById(R.id.occupation);
-            title = view.findViewById(R.id.tedxTitle);
+            title = view.findViewById(R.id.title);
             view.setOnClickListener(this);
         }
 

@@ -7,23 +7,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
 import thecodingstache.tedxuthlarissa.ListAdapter.PageAdapter;
 import thecodingstache.tedxuthlarissa.R;
 
-public class TeamFragment extends Fragment {
+public class TeamFragment extends CurrationFragment {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private TabItem tab1, tab2, tab3;
     public PagerAdapter mPagerAdapter;
-    FragmentManager fragmentManager;
 
     @Nullable
     @Override
@@ -44,12 +42,13 @@ public class TeamFragment extends Fragment {
                 mViewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 0) {
                     mPagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 1) {
-                    mPagerAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 2) {
-                    mPagerAdapter.notifyDataSetChanged();
+                    if (tab.getPosition() == 1)
+                        mPagerAdapter.notifyDataSetChanged();
+                    if (tab.getPosition() == 2)
+                        mPagerAdapter.notifyDataSetChanged();
                 }
             }
+
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -65,3 +64,4 @@ public class TeamFragment extends Fragment {
         return view;
     }
 }
+

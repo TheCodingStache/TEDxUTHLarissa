@@ -21,14 +21,14 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 1:
+            case 0:
                 return new CurrationFragment();
-            case 2:
+            case 1:
                 return new DirectorsFragment();
-            case 3:
+            case 2:
                 return new CoreTeamFragment();
-            default:
-                return null;
+                default:
+                    return null;
         }
 
     }
