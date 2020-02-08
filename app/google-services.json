@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "9069820649",
+    "firebase_url": "https://tedxuthlarissa-f59a1.firebaseio.com",
+    "project_id": "tedxuthlarissa-f59a1",
+    "storage_bucket": "tedxuthlarissa-f59a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9069820649:android:93e2e9878165b5d8584e78",
+        "android_client_info": {
+          "package_name": "thecodingstache.tedxuthlarissa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9069820649-omqpg3lkjlce3p9nbt46t4a2n85081ka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "thecodingstache.tedxuthlarissa",
+            "certificate_hash": "bbde657a317da228884415b72eb56259eeae60c2"
+          }
+        },
+        {
+          "client_id": "9069820649-olrop1jia4h1jals5ahq1hq0o5m529m1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-2gWAwqtOkXp1cc7XdE2PqHg8rPcJpOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9069820649-olrop1jia4h1jals5ahq1hq0o5m529m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
