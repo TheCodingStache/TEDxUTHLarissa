@@ -7,17 +7,16 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
-
-import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
 import thecodingstache.tedxuthlarissa.ListAdapter.PageAdapter;
 import thecodingstache.tedxuthlarissa.R;
 
-public class TeamFragment extends CurrationFragment {
+public class TeamFragment extends Fragment {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private TabItem tab1, tab2, tab3;
@@ -27,7 +26,6 @@ public class TeamFragment extends CurrationFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team, container, false);
-
         mTabLayout = view.findViewById(R.id.tabLayout);
         tab1 = view.findViewById(R.id.tab1);
         tab2 = view.findViewById(R.id.tab2);
@@ -40,15 +38,17 @@ public class TeamFragment extends CurrationFragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
+                mPagerAdapter.notifyDataSetChanged();
                 if (tab.getPosition() == 0) {
                     mPagerAdapter.notifyDataSetChanged();
                     if (tab.getPosition() == 1)
                         mPagerAdapter.notifyDataSetChanged();
                     if (tab.getPosition() == 2)
                         mPagerAdapter.notifyDataSetChanged();
+                } else {
+                    mViewPager.setCurrentItem(tab.getPosition());
                 }
             }
-
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -61,7 +61,20 @@ public class TeamFragment extends CurrationFragment {
             }
         });
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mViewPager.setAdapter(mPagerAdapter);
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
     }
 }
 

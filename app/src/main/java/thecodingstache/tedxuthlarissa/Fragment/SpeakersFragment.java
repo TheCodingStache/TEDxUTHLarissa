@@ -30,9 +30,9 @@ public class SpeakersFragment extends Fragment {
         mSpeakersArrayList.add(new Speakers("Achilleas Gravanis",
                 "Professor of Pharmacology Faculty of Medicine University of Crete / Collaborative Researcher IMBB-FORTH"
                 , R.drawable.gravanis, "Στους εξι δρόμους"));
-//        mSpeakersArrayList.add(new Speakers("Fotis Filippopoulos",
-//                "Corporate Innovation Specialist"
-//                , R.drawable.fotis, "The Anatomy of Momentum Mindset"));
+        mSpeakersArrayList.add(new Speakers("Fotis Filippopoulos",
+                "Corporate Innovation Specialist"
+                , R.drawable.fotis, "The Anatomy of Momentum Mindset"));
         mSpeakersArrayList.add(new Speakers("Marina Hatsopoulos",
                 "Board Chair, Levitronix Technologies"
                 , R.drawable.marina, "From the FAshes of Crisis Arises Opportunity"));

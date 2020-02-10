@@ -1,6 +1,5 @@
 package thecodingstache.tedxuthlarissa;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;

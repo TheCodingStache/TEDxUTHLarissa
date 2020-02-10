@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.CoreTeam.CurrationFragment">
-    
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_curration"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
 </FrameLayout>
