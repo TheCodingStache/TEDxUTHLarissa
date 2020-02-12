@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import thecodingstache.tedxuthlarissa.ListAdapter.DirectorAdapter;
-import thecodingstache.tedxuthlarissa.ListAdapter.TeamAdapter;
+import thecodingstache.tedxuthlarissa.ListAdapter.MainStageAdapter;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
 
@@ -40,7 +39,7 @@ public class MainStage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_directors, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_directors);
-        DirectorAdapter listAdapter = new DirectorAdapter(directors, MainStage.this);
+        MainStageAdapter listAdapter = new MainStageAdapter(directors, MainStage.this);
         recyclerView.setAdapter(listAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
