@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
 import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.DirectorsFragment;
-import thecodingstache.tedxuthlarissa.Fragment.TeamFragment;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
 
