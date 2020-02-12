@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,14 +21,19 @@ import thecodingstache.tedxuthlarissa.R;
 public class CurrationFragment extends Fragment {
     List<Team> curration;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        curration = new ArrayList<>();
+        curration.add(new Team("Kostas Kalaitzidis", "Currator/Lead Organiazer", R.drawable.kostas));
+        curration.add(new Team("Ergys Plakas", "Co-organizer/Production", R.drawable.ergys));
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_curration, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_curration);
-        curration = new ArrayList<>();
-        curration.add(new Team("Kostas Kalaitzidis", "Currator/Lead Organiazer", R.drawable.speaker));
-        curration.add(new Team("Ergys Plakas", "Co-organizer/Production", R.drawable.calendar));
         TeamAdapter listAdapter = new TeamAdapter(curration, CurrationFragment.this);
         recyclerView.setAdapter(listAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

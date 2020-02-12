@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+
 import thecodingstache.tedxuthlarissa.ListAdapter.PageAdapter;
 import thecodingstache.tedxuthlarissa.R;
 
@@ -33,20 +34,21 @@ public class TeamFragment extends Fragment {
         mViewPager = view.findViewById(R.id.viewPager);
         mPagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), mTabLayout.getTabCount());
         mViewPager.setAdapter(mPagerAdapter);
-
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 mViewPager.setCurrentItem(tab.getPosition());
                 mPagerAdapter.notifyDataSetChanged();
                 if (tab.getPosition() == 0) {
                     mPagerAdapter.notifyDataSetChanged();
-                    if (tab.getPosition() == 1)
-                        mPagerAdapter.notifyDataSetChanged();
-                    if (tab.getPosition() == 2)
-                        mPagerAdapter.notifyDataSetChanged();
-                } else {
-                    mViewPager.setCurrentItem(tab.getPosition());
+                }
+                if (tab.getPosition() == 1) {
+                    mPagerAdapter.notifyDataSetChanged();
+                }
+                if (tab.getPosition() == 2) {
+                    mPagerAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -61,16 +63,14 @@ public class TeamFragment extends Fragment {
             }
         });
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        mViewPager.setAdapter(mPagerAdapter);
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

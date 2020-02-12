@@ -3,23 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/speakers">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="thecodingstache.tedxuthlarissa.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/schedule"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="Schedule"
+        tools:layout="@layout/fragment_schedule" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="thecodingstache.tedxuthlarissa.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/speakers"
+        android:name="thecodingstache.tedxuthlarissa.ui.home.HomeFragment"
+        android:label="Speakers"
+        tools:layout="@layout/fragment_speakers" />
+
+    <fragment
+        android:id="@+id/ourteam"
+        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
+        android:label="Our Team"
+        tools:layout="@layout/fragment_team" />
+    <fragment
+        android:id="@+id/map"
+        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
+        android:label="Our Team"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/venue"
+        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
+        android:label="Our Team"
+        tools:layout="@layout/fragment_venue" />
+    <fragment
+        android:id="@+id/partners"
+        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
+        android:label="Our Team"
+        tools:layout="@layout/fragment_partners" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
+        android:label="Our Team"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

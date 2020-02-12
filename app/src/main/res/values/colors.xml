@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="tedxRed">#E62A1E</color>
     <color name="lightGrey">#D3D3D3</color>
+    <color name="grey">#e3e3e3</color>
 </resources>
