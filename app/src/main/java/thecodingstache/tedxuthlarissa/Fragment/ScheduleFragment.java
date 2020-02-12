@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.DirectorsFragment;
 import thecodingstache.tedxuthlarissa.ListAdapter.ScheduleAdapter;
 import thecodingstache.tedxuthlarissa.R;
+import thecodingstache.tedxuthlarissa.Schedule.MainStage;
 
 public class ScheduleFragment extends Fragment {
     private ScheduleAdapter adapter;
@@ -23,16 +25,15 @@ public class ScheduleFragment extends Fragment {
     private String mainStage = "Main Stage";
     private String greenRoom = "Green Room";
     private String workshops = "Workshops";
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = view.findViewById(R.id.request_orders_view_pager);
         scheduleTabLayout = view.findViewById(R.id.request_orders_tabs);
-
+        getActivity().setTitle("Schedule");
         adapter = new ScheduleAdapter(getFragmentManager());
-        adapter.addFragment(new DirectorsFragment(), mainStage);
+        adapter.addFragment(new MainStage(), mainStage);
         adapter.addFragment(new DirectorsFragment(), greenRoom);
         adapter.addFragment(new DirectorsFragment(), workshops);
 
@@ -40,4 +41,5 @@ public class ScheduleFragment extends Fragment {
         scheduleTabLayout.setupWithViewPager(viewPager);
         return view;
     }
+
 }

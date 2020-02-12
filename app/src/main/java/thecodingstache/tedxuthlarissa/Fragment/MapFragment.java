@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,7 +27,6 @@ import thecodingstache.tedxuthlarissa.R;
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     SupportMapFragment mSupportMapFragment;
     private GoogleMap mMap;
-
     public MapFragment() {
 
     }
@@ -35,6 +35,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+        getActivity().setTitle("Map");
         mSupportMapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         if (mSupportMapFragment == null) {
             FragmentManager fragmentManager = getFragmentManager();

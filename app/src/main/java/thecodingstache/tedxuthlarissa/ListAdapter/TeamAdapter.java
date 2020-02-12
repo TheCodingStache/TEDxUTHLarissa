@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
-import thecodingstache.tedxuthlarissa.Fragment.TeamFragment;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
 
@@ -28,15 +27,15 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ListViewHolder
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_item, parent, false);
         return new ListViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Team team = mTeamList.get(position);
-        holder.name.setText("Full Name\n"+ team.getName());
-        holder.title.setText("Title\n"+ team.getTitle());
+        holder.name.setText("Full Name\n" + team.getName());
+        holder.title.setText("Title\n" + team.getTitle());
         holder.team.setImageResource(team.getPhoto());
     }
 

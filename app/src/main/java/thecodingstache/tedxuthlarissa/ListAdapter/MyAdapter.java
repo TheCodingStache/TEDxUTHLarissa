@@ -27,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListViewHolder> {
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_speakers, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.speaker_item, parent, false);
         return new ListViewHolder(v);
     }
 

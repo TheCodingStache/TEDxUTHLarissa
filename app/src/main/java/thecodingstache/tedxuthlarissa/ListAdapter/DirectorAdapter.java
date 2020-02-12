@@ -28,7 +28,7 @@ public class DirectorAdapter extends RecyclerView.Adapter<DirectorAdapter.ListVi
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_item, parent, false);
         return new ListViewHolder(v);
     }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +21,12 @@ import thecodingstache.tedxuthlarissa.R;
 
 public class SpeakersFragment extends Fragment {
     List<Speakers> mSpeakersArrayList;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speakers, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        getActivity().setTitle("Speakers");
         mSpeakersArrayList = new ArrayList<>();
         mSpeakersArrayList.add(new Speakers("Achilleas Gravanis",
                 "Professor of Pharmacology Faculty of Medicine University of Crete / Collaborative Researcher IMBB-FORTH"

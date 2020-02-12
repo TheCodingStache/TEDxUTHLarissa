@@ -11,50 +11,53 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import thecodingstache.tedxuthlarissa.Model.Team;
+import thecodingstache.tedxuthlarissa.Model.Schedule;
 import thecodingstache.tedxuthlarissa.R;
 import thecodingstache.tedxuthlarissa.Schedule.MainStage;
 
 public class MainStageAdapter extends RecyclerView.Adapter<MainStageAdapter.ListViewHolder> {
-    private List<Team> mTeamList;
+    private List<Schedule> mSchedules;
     private MainStage mContext;
 
-    public MainStageAdapter(List<Team> mTeamList, MainStage mContext) {
-        this.mTeamList = mTeamList;
+    public MainStageAdapter(List<Schedule> mSchedules, MainStage mContext) {
+        this.mSchedules = mSchedules;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_stage_item, parent, false);
         return new ListViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Team team = mTeamList.get(position);
-        holder.name.setText("Full Name\n"+ team.getName());
-        holder.title.setText("Title\n"+ team.getTitle());
-        holder.team.setImageResource(team.getPhoto());
+        Schedule schedule = mSchedules.get(position);
+        holder.title.setText(schedule.getTitleProgram());
+        holder.description.setText(schedule.getDescription());
+        holder.time.setText(schedule.getTime());
+
+
     }
 
 
     @Override
     public int getItemCount() {
-        return mTeamList.size();
+        return mSchedules.size();
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView team;
-        private TextView name;
         private TextView title;
+        private TextView description;
+        private TextView time;
+
 
         public ListViewHolder(View view) {
             super(view);
-            team = view.findViewById(R.id.curration);
-            name = view.findViewById(R.id.name);
-            title = view.findViewById(R.id.title);
+            title = view.findViewById(R.id.title_program);
+            description = view.findViewById(R.id.description);
+            time  =view.findViewById(R.id.timeStage);
             view.setOnClickListener(this);
         }
 

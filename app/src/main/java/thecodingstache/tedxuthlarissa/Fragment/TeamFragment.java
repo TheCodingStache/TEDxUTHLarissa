@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -21,13 +22,14 @@ public class TeamFragment extends Fragment {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private TabItem tab1, tab2, tab3;
-    public PagerAdapter mPagerAdapter;
+    private PagerAdapter mPagerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team, container, false);
         mTabLayout = view.findViewById(R.id.tabLayout);
+        getActivity().setTitle("Team");
         tab1 = view.findViewById(R.id.tab1);
         tab2 = view.findViewById(R.id.tab2);
         tab3 = view.findViewById(R.id.tab3);
