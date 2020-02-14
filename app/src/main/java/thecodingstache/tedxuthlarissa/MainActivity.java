@@ -62,18 +62,18 @@ public class MainActivity extends AppCompatActivity {
 //        sNavigationDrawer = findViewById(R.id.navigationDrawer);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        fragmentClass = MenuFragment.class;
-        try {
-            mFragment = (Fragment) fragmentClass.newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-        if (mFragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.frameLayout, mFragment).commit();
-        }
+//        fragmentClass = MenuFragment.class;
+//        try {
+//            mFragment = (Fragment) fragmentClass.newInstance();
+//        } catch (IllegalAccessException | InstantiationException e) {
+//            e.printStackTrace();
+//        }
+//        if (mFragment != null) {
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+//                    .replace(R.id.frameLayout, mFragment).commit();
+//        }
 
     }
 
