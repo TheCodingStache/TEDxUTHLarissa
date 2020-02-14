@@ -34,8 +34,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ListViewHolder
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Team team = mTeamList.get(position);
-        holder.name.setText("Full Name\n" + team.getName());
-        holder.title.setText("Title\n" + team.getTitle());
+        holder.name.setText(team.getName());
+        holder.title.setText(team.getTitle());
         holder.team.setImageResource(team.getPhoto());
     }
 

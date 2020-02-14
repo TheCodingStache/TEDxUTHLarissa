@@ -26,7 +26,7 @@ public class SpeakersFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speakers, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        getActivity().setTitle("Speakers");
+//        getActivity().setTitle("Speakers");
         mSpeakersArrayList = new ArrayList<>();
         mSpeakersArrayList.add(new Speakers("Achilleas Gravanis",
                 "Professor of Pharmacology Faculty of Medicine University of Crete / Collaborative Researcher IMBB-FORTH"

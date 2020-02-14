@@ -34,8 +34,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Speakers speakers = mSpeakersList.get(position);
-        holder.name.setText("Full Name\n"+ speakers.getName());
-        holder.occupation.setText("Joc Occupation\n"+ speakers.getOccupation());
+        holder.name.setText(speakers.getName());
+        holder.occupation.setText(speakers.getOccupation());
         holder.speakers.setImageResource(speakers.getImage());
         holder.title.setText("TEDx Talk\n" + speakers.getTitle());
     }

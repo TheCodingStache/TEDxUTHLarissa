@@ -31,7 +31,7 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = view.findViewById(R.id.request_orders_view_pager);
         scheduleTabLayout = view.findViewById(R.id.request_orders_tabs);
-        getActivity().setTitle("Schedule");
+//        getActivity().setTitle("Schedule");
         adapter = new ScheduleAdapter(getFragmentManager());
         adapter.addFragment(new MainStage(), mainStage);
         adapter.addFragment(new DirectorsFragment(), greenRoom);

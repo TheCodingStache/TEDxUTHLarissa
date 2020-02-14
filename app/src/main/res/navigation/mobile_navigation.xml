@@ -8,39 +8,38 @@
     <fragment
         android:id="@+id/schedule"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Schedule"
+        android:label="schedule"
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
         android:id="@+id/speakers"
         android:name="thecodingstache.tedxuthlarissa.ui.home.HomeFragment"
-        android:label="Speakers"
+        android:label="speakers"
         tools:layout="@layout/fragment_speakers" />
 
     <fragment
         android:id="@+id/ourteam"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Our Team"
         tools:layout="@layout/fragment_team" />
     <fragment
         android:id="@+id/map"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Our Team"
+        android:label="map"
         tools:layout="@layout/fragment_map" />
-    <fragment
-        android:id="@+id/venue"
-        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Our Team"
-        tools:layout="@layout/fragment_venue" />
-    <fragment
-        android:id="@+id/partners"
-        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Our Team"
-        tools:layout="@layout/fragment_partners" />
+<!--    <fragment-->
+<!--        android:id="@+id/venue"-->
+<!--        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"-->
+<!--        android:label="venue"-->
+<!--        tools:layout="@layout/fragment_venue" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/partners"-->
+<!--        android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"-->
+<!--        android:label="partners"-->
+<!--        tools:layout="@layout/fragment_partners" />-->
     <fragment
         android:id="@+id/profile"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="Our Team"
+        android:label="profile"
         tools:layout="@layout/fragment_profile" />
 
 </navigation>

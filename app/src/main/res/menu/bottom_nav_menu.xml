@@ -19,17 +19,11 @@
         android:id="@+id/map_item"
         android:icon="@drawable/map"
         android:title="Map" />
-<!--    <item-->
-<!--        android:id="@+id/venue_item"-->
-<!--        android:icon="@drawable/ic_notifications_black_24dp"-->
-<!--        android:title="Venue" />-->
-<!--    <item-->
-<!--        android:id="@+id/partners_item"-->
-<!--        android:icon="@drawable/ic_notifications_black_24dp"-->
-<!--        android:title="Partners" />-->
+
     <item
         android:id="@+id/profile_item"
         android:icon="@drawable/profile"
         android:title="Profile" />
+
 
 </menu>

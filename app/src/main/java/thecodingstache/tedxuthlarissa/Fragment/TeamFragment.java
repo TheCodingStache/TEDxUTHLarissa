@@ -29,7 +29,7 @@ public class TeamFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team, container, false);
         mTabLayout = view.findViewById(R.id.tabLayout);
-        getActivity().setTitle("Team");
+//        getActivity().setTitle("Team");
         tab1 = view.findViewById(R.id.tab1);
         tab2 = view.findViewById(R.id.tab2);
         tab3 = view.findViewById(R.id.tab3);
