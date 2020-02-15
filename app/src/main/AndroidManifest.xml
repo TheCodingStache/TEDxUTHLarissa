@@ -44,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragment.MenuFragment" />
         <activity android:name=".MainActivity" />
     </application>
 
