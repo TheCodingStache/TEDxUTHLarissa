@@ -8,13 +8,11 @@
     <fragment
         android:id="@+id/schedule"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="schedule"
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
         android:id="@+id/speakers"
         android:name="thecodingstache.tedxuthlarissa.ui.home.HomeFragment"
-        android:label="speakers"
         tools:layout="@layout/fragment_speakers" />
 
     <fragment
@@ -24,7 +22,6 @@
     <fragment
         android:id="@+id/map"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="map"
         tools:layout="@layout/fragment_map" />
 <!--    <fragment-->
 <!--        android:id="@+id/venue"-->
@@ -39,7 +36,6 @@
     <fragment
         android:id="@+id/profile"
         android:name="thecodingstache.tedxuthlarissa.ui.dashboard.DashboardFragment"
-        android:label="profile"
         tools:layout="@layout/fragment_profile" />
 
 </navigation>

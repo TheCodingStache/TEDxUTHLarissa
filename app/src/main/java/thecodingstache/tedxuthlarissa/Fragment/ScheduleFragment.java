@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -25,12 +24,14 @@ public class ScheduleFragment extends Fragment {
     private String mainStage = "Main Stage";
     private String greenRoom = "Green Room";
     private String workshops = "Workshops";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         viewPager = view.findViewById(R.id.request_orders_view_pager);
         scheduleTabLayout = view.findViewById(R.id.request_orders_tabs);
+        scheduleTabLayout.setTabMode(TabLayout.MODE_FIXED);
 //        getActivity().setTitle("Schedule");
         adapter = new ScheduleAdapter(getFragmentManager());
         adapter.addFragment(new MainStage(), mainStage);

@@ -9,6 +9,17 @@
     tools:context=".Fragment.ProfileFragment">
 
 
+    <TextView
+        android:id="@+id/logOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        android:layout_margin="20dp"
+        android:focusable="true"
+        android:textColor="@color/Black"
+        android:layout_alignParentEnd="true"/>
+
+
     <!--        <ImageView-->
     <!--            android:id="@+id/cover"-->
     <!--            android:layout_width="match_parent"-->
@@ -20,20 +31,20 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile"
+        android:id="@+id/profile_picture"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/me"
+        android:src="@drawable/profile"
         app:civ_border_color="@color/grey"
         app:civ_border_width="3dp" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile"
+        android:layout_below="@id/profile_picture"
         android:layout_centerHorizontal="true"
         android:background="@drawable/fill_white"
         android:text="Dimitris Pallas"
@@ -41,33 +52,13 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/occupation"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/fill_white"
-        android:text="Larissa,Greece"
-        android:textColor="@color/Black"
-        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/occupation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/fill_white"
-        android:text="Software Engineer"
-        android:textColor="@color/Black"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/ticketText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/location"
+        android:layout_below="@+id/ticket"
         android:layout_centerHorizontal="true"
         android:background="@drawable/fill_white"
         android:text="Your Ticket"
@@ -79,7 +70,7 @@
         android:id="@+id/ticket"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/occupation"
+        android:layout_below="@+id/profile_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:background="@drawable/shadow"

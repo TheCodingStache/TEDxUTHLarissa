@@ -22,14 +22,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class HomeScreen extends AppCompatActivity {
+import java.io.Serializable;
+
+import thecodingstache.tedxuthlarissa.Fragment.ProfileFragment;
+
+public class HomeScreen extends AppCompatActivity implements Serializable {
     static final int GOOGLE_SIGN = 123;
     FirebaseAuth mFirebaseAuth;
     Button googleLogin;
@@ -103,21 +106,25 @@ public class HomeScreen extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         Log.d("TAG", "firebaseAuthWithGoogle" + account.getId());
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d("TAG", "Sing in success");
+                            Log.d("TAG", "Sign in success");
                             loadingBar.dismiss();
-                            Toast.makeText(HomeScreen.this, "Επιτυχής Σύνδεση", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                            Toast.makeText(HomeScreen.this, "Welcome back! ", Toast.LENGTH_SHORT).show();
+                            updateUI(user);
                             openMainActivity();
+                            finish();
+
                         } else {
                             loadingBar.dismiss();
-                            Toast.makeText(HomeScreen.this, "Ωχ κάτι πήγε στραβά", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeScreen.this, "Something went wrong... try again  ", Toast.LENGTH_SHORT).show();
                             Log.d("TAG", "Sing in failed");
+                            updateUI(user);
                         }
                     }
                 });
@@ -127,6 +134,16 @@ public class HomeScreen extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            String name = user.getDisplayName();
+            String photo = String.valueOf(user.getPhotoUrl());
+            Intent intent = new Intent(HomeScreen.this, ProfileFragment.class);
+            intent.putExtra("name", name);
+            intent.putExtra("photo", photo);
+        }
     }
 }
 
