@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relative"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/tedback"
     tools:context=".HomeScreen">
-
-
-    <ImageView
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/logo_black" />
-
 
     <RelativeLayout
         android:id="@+id/relative1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_below="@+id/start">
+        android:layout_marginTop="425dp"
+        android:layout_marginEnd="5dp">
 
 
         <Button
@@ -75,7 +66,7 @@
             android:text="Signup"
             android:textColor="@color/White" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>
 
 
 
