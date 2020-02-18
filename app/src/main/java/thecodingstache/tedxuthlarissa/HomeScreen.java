@@ -73,6 +73,7 @@ public class HomeScreen extends AppCompatActivity implements Serializable {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookToken(loginResult.getAccessToken());
+                Toast.makeText(HomeScreen.this, "Welcome to TEDxUTHLarissa! ", Toast.LENGTH_SHORT).show();
                 openMainActivity();
 
             }
@@ -180,6 +181,5 @@ public class HomeScreen extends AppCompatActivity implements Serializable {
             intent.putExtra("photo", photo);
         }
     }
-
 }
 

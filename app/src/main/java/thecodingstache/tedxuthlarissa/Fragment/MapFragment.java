@@ -52,7 +52,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mSupportMapFragment = SupportMapFragment.newInstance();
             fragmentTransaction.replace(R.id.map, mSupportMapFragment).commit();
         }
-        getLocationPermission();
 
         mSupportMapFragment.getMapAsync(this);
         return view;
@@ -65,7 +64,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         LatLng larissa = new LatLng(39.614430, 22.388579);
         mMap.addMarker(new MarkerOptions().position(larissa).title("Faculty of Medicine, School of Health Sciences, University of Thessaly"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(larissa));
-        mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
         float zoomLevel = 16.0f;

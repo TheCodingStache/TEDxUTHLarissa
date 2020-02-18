@@ -3,7 +3,6 @@ package thecodingstache.tedxuthlarissa.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,22 +16,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
-import com.google.firebase.auth.UserProfileChangeRequest;
 
 import thecodingstache.tedxuthlarissa.HomeScreen;
-import thecodingstache.tedxuthlarissa.Model.User;
 import thecodingstache.tedxuthlarissa.R;
 
 public class ProfileFragment extends Fragment {
-    private static final String TAG = "Name" ;
+    private static final String TAG = "Name";
     private GoogleSignInClient mGoogleSignInClient;
     private TextView profile_name;
     private ImageView imageView;
@@ -64,7 +61,11 @@ public class ProfileFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         updateUI();
-        logOut.setOnClickListener(v -> Logout());
+//        facebookPhotoProfile();
+        logOut.setOnClickListener(v -> {
+            Logout();
+            facebookLogout();
+        });
         return view;
     }
 
@@ -78,6 +79,13 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void facebookLogout() {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        Toast.makeText(getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+        Intent openHome = new Intent(getContext(), HomeScreen.class);
+        startActivity(openHome);
+    }
 
     private void updateUI() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,7 +100,23 @@ public class ProfileFragment extends Fragment {
         //final FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
         // If the above were null, iterate the provider data
         // and set with the first non null data
+    }
 
-
+    private void facebookPhotoProfile() {
+        String facebookUserId = "";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // find the Facebook profile and get the user's id
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                // check if the provider id matches "facebook.com"
+                if (FacebookAuthProvider.PROVIDER_ID.equals(profile.getProviderId())) {
+                    facebookUserId = profile.getUid();
+                }
+            }
+        }
+        // construct the URL to the profile picture, with a custom height
+        // alternatively, use '?type=small|medium|large' instead of ?height=
+        String photoUrl = "https://graph.facebook.com/" + facebookUserId + "/picture?height=500";
+        Glide.with(this).load(photoUrl).into(imageView);
     }
 }

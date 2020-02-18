@@ -31,15 +31,12 @@
     <!--        android:background="?attr/selectableItemBackgroundBorderless"-->
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profile_picture"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/profile"
-        app:civ_border_color="@color/grey"
-        app:civ_border_width="3dp" />
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:id="@+id/profile_name"
@@ -48,7 +45,6 @@
         android:layout_below="@id/profile_picture"
         android:layout_centerHorizontal="true"
         android:background="@drawable/fill_white"
-        android:text="Dimitris Pallas"
         android:textColor="@color/Black"
         android:textSize="24sp"
         android:textStyle="bold" />
