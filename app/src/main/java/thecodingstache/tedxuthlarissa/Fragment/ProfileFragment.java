@@ -61,7 +61,7 @@ public class ProfileFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         updateUI();
-//        facebookPhotoProfile();
+        facebookPhotoProfile();
         logOut.setOnClickListener(v -> {
             Logout();
             facebookLogout();

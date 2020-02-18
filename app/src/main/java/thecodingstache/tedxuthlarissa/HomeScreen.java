@@ -85,7 +85,8 @@ public class HomeScreen extends AppCompatActivity implements Serializable {
 
             @Override
             public void onError(FacebookException error) {
-                Log.d("DEBUGGING FACEBOOK", "onError: " + error.getMessage());
+                Log.d("HomeScreen", "onError: " + error.getMessage());
+
                 Toast.makeText(HomeScreen.this, "error", Toast.LENGTH_LONG).show();
 
             }
