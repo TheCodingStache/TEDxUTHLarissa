@@ -13,8 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     ActionBarDrawerToggle mActionBarDrawerToggle;
     NavigationView navigationView;
-    AppBarConfiguration appBarConfiguration;
     BottomNavigationView bottomNavigationView;
     Toolbar mToolbar;
 
@@ -49,19 +46,8 @@ public class MainActivity extends AppCompatActivity {
 //        imageView = findViewById(R.id.gif);
 //        mTextView = findViewById(R.id.welcometotedx);
 //        Glide.with(this).load(R.drawable.tedback).into(imageView);
-        drawer = findViewById(R.id.drawer);
-        navigationView = findViewById(R.id.navigationView);
-        navController = Navigation.findNavController(this, R.id.main_fragment);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, mToolbar, R.string.nav_app_bar_open_drawer_description, R.string.nav_app_bar_navigate_up_description);
-        drawer.addDrawerListener(mActionBarDrawerToggle);
-        mActionBarDrawerToggle.syncState();
-        appBarConfiguration = new AppBarConfiguration.Builder()
-                .setDrawerLayout(drawer)
-                .build();
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);

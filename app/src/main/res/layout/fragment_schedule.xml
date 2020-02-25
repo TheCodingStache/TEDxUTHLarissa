@@ -1,19 +1,21 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.ScheduleFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/request_orders_tabs"
-        app:tabIndicatorColor="@color/tedxRed"
-        app:tabMode="fixed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White"
+        android:clickable="true"
         android:focusable="true"
-        android:scrollIndicators="end" />
+        android:scrollIndicators="end"
+        app:tabIndicatorColor="@color/tedxRed"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/tedxRed" />
 
 
     <androidx.viewpager.widget.ViewPager

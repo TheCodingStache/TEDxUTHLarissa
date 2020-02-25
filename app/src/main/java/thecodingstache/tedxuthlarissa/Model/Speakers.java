@@ -1,5 +1,9 @@
 package thecodingstache.tedxuthlarissa.Model;
 
+import android.graphics.drawable.Drawable;
+
+import com.bumptech.glide.RequestBuilder;
+
 public class Speakers {
     private String name;
     private String occupation;
@@ -45,7 +49,7 @@ public class Speakers {
         this.image = image;
     }
 
-    public Speakers() {
+    public Speakers(String achilleas_gravanis, String occupation, RequestBuilder<Drawable> load, String στους_εξι_δρόμους) {
 
     }
 

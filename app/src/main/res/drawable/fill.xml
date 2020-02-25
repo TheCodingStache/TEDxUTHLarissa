@@ -6,7 +6,9 @@
     <solid
         android:color="@color/tedxRed"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:alpha="0.5"
+        />
     <corners
         android:radius="10mm"/>
     <padding

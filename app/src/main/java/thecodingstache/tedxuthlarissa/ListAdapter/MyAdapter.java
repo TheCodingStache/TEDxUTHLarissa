@@ -1,5 +1,6 @@
 package thecodingstache.tedxuthlarissa.ListAdapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         Speakers speakers = mSpeakersList.get(position);
-        holder.name.setText(speakers.getName());
-        holder.occupation.setText(speakers.getOccupation());
+//        holder.name.setText(speakers.getName());
+//        holder.occupation.setText(speakers.getOccupation());
         holder.speakers.setImageResource(speakers.getImage());
         holder.title.setText("TEDx Talk\n" + speakers.getTitle());
     }
@@ -55,8 +56,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ListViewHolder> {
         public ListViewHolder(View view) {
             super(view);
             speakers = view.findViewById(R.id.speakers);
-            name = view.findViewById(R.id.name);
-            occupation = view.findViewById(R.id.occupation);
+//            name = view.findViewById(R.id.name);
+//            occupation = view.findViewById(R.id.occupation);
             title = view.findViewById(R.id.tedxTitle);
             view.setOnClickListener(this);
         }

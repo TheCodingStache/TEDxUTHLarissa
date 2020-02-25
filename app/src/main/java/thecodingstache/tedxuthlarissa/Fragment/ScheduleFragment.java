@@ -32,12 +32,10 @@ public class ScheduleFragment extends Fragment {
         viewPager = view.findViewById(R.id.request_orders_view_pager);
         scheduleTabLayout = view.findViewById(R.id.request_orders_tabs);
         scheduleTabLayout.setTabMode(TabLayout.MODE_FIXED);
-//        getActivity().setTitle("Schedule");
         adapter = new ScheduleAdapter(getFragmentManager());
         adapter.addFragment(new MainStage(), mainStage);
         adapter.addFragment(new DirectorsFragment(), greenRoom);
         adapter.addFragment(new DirectorsFragment(), workshops);
-
         viewPager.setAdapter(adapter);
         scheduleTabLayout.setupWithViewPager(viewPager);
         return view;

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import thecodingstache.tedxuthlarissa.ListAdapter.CurrationTeamAdapter;
 import thecodingstache.tedxuthlarissa.ListAdapter.TeamAdapter;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
@@ -34,7 +35,8 @@ public class CurrationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_curration, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_curration);
-        TeamAdapter listAdapter = new TeamAdapter(curration, CurrationFragment.this);
+        CurrationTeamAdapter listAdapter = new CurrationTeamAdapter(curration, CurrationFragment.this);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(listAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);

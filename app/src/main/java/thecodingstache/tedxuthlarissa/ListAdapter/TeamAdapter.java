@@ -7,61 +7,48 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import thecodingstache.tedxuthlarissa.Fragment.CoreTeam.CurrationFragment;
 import thecodingstache.tedxuthlarissa.Model.Team;
 import thecodingstache.tedxuthlarissa.R;
 
-public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ListViewHolder> {
-    private List<Team> mTeamList;
-    private CurrationFragment mContext;
+public class TeamAdapter extends FragmentStatePagerAdapter {
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public TeamAdapter(List<Team> mTeamList, CurrationFragment mContext) {
-        this.mTeamList = mTeamList;
-        this.mContext = mContext;
-    }
-
-    @NonNull
-    @Override
-    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.curration_item, parent, false);
-        return new ListViewHolder(v);
+    public TeamAdapter(FragmentManager fm) {
+        super(fm);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Team team = mTeamList.get(position);
-        holder.name.setText(team.getName());
-        holder.title.setText(team.getTitle());
-        holder.team.setImageResource(team.getPhoto());
+    public Fragment getItem(int position) {
+        return mFragmentList.get(position);
     }
 
+    public void addFragment(Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
 
     @Override
-    public int getItemCount() {
-        return mTeamList.size();
+    public CharSequence getPageTitle(int position) {
+        return mFragmentTitleList.get(position);
     }
 
-    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView team;
-        private TextView name;
-        private TextView title;
+    @Override
+    public int getCount() {
+        return mFragmentList.size();
+    }
 
-        public ListViewHolder(View view) {
-            super(view);
-            team = view.findViewById(R.id.curration);
-            name = view.findViewById(R.id.name);
-            title = view.findViewById(R.id.title);
-            view.setOnClickListener(this);
-        }
-
-
-        @Override
-        public void onClick(View v) {
-
-        }
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 }

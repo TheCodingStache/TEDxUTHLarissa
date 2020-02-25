@@ -1,71 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relative"
+    android:id="@+id/relativeHome"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/tedback"
     tools:context=".HomeScreen">
 
     <RelativeLayout
-        android:id="@+id/relative1"
-        android:layout_width="match_parent"
+        android:id="@+id/external"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginEnd="5dp">
-
-
-        <Button
-            android:id="@+id/googleLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border"
-            android:text="Connect with Google"
-            android:textColor="@color/tedxRed" />
-
-        <Button
-            android:id="@+id/facebookLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/googleLogin"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border"
-            android:text="Connect with Facebook"
-            android:textColor="@color/tedxRed" />
+        android:layout_margin="20dp">
 
         <TextView
-            android:id="@+id/textConnect"
+            android:id="@+id/skip_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:focusable="true"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:text="SKIP LOGIN" />
+
+
+        <RelativeLayout
+            android:id="@+id/relative1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/facebookLogin"
-            android:layout_marginTop="10dp"
-            android:text="Or use your email address"
-            android:textAlignment="center"
-            android:textColor="@color/Black" />
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="425dp"
+            android:layout_marginEnd="5dp">
 
-        <Button
-            android:id="@+id/login"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textConnect"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border"
-            android:text="Login"
-            android:textColor="@color/tedxRed" />
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textConnect"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/fill"
-            android:text="Signup"
-            android:textColor="@color/White" />
+            <Button
+                android:id="@+id/googleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/fill"
+                android:text="Connect with Google"
+                android:textAllCaps="false"
+                android:textColor="@color/White" />
+
+            <Button
+                android:id="@+id/facebookLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/googleLogin"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fill"
+                android:text="Connect with Facebook"
+                android:textAllCaps="false"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:id="@+id/textConnect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/facebookLogin"
+                android:layout_marginTop="10dp"
+                android:text="Or use your email address"
+                android:textAlignment="center"
+                android:textColor="@color/Black"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textConnect"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:text="Login"
+                android:textColor="@color/tedxRed"
+                android:visibility="gone" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textConnect"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fill"
+                android:text="Signup"
+                android:textColor="@color/White"
+                android:visibility="gone" />
+        </RelativeLayout>
     </RelativeLayout>
+
 </LinearLayout>
 
 
