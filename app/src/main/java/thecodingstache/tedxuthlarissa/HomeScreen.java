@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -29,11 +30,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,13 +48,13 @@ import static com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 
 public class HomeScreen extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     static final int GOOGLE_SIGN = 123;
-    FirebaseAuth mFirebaseAuth;
-    FirebaseUser mFirebaseUser;
-    Button googleLogin;
-    ProgressDialog loadingBar;
-    GoogleSignInClient mGoogleSignInClient;
-    CallbackManager mCallbackManager;
-    Button facebookLogIn;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private Button googleLogin;
+    private ProgressDialog loadingBar;
+    private GoogleSignInClient mGoogleSignInClient;
+    private CallbackManager mCallbackManager;
+    private Button facebookLogIn;
     LinearLayout mLinearLayout;
 
     @Override
@@ -103,20 +102,23 @@ public class HomeScreen extends AppCompatActivity implements EasyPermissions.Per
                 @Override
                 public void onCancel() {
                     Snackbar.make(mLinearLayout, "cancelled", Snackbar.LENGTH_LONG).show();
-//                Toast.makeText(HomeScreen.this, "cancelled", Toast.LENGTH_LONG).show();
+
                 }
 
                 @Override
                 public void onError(FacebookException error) {
                     Log.d("HomeScreen", "onError: " + error.getMessage());
-
-                    Toast.makeText(HomeScreen.this, "error", Toast.LENGTH_LONG).show();
+                    Snackbar.make(mLinearLayout, "Error", Snackbar.LENGTH_LONG).show();
 
                 }
             });
+
+
+
+
             facebookLogIn = findViewById(R.id.facebookLogin);
             facebookLogIn.setOnClickListener(v -> LoginManager.getInstance()
-                    .logInWithReadPermissions(HomeScreen.this, Arrays.asList("email")));
+                    .logInWithReadPermissions(HomeScreen.this, Arrays.asList("email", "public_profile")));
 
             button.setOnClickListener(v -> {
                 Intent intent = new Intent(HomeScreen.this, LoginScreen.class);
@@ -152,7 +154,6 @@ public class HomeScreen extends AppCompatActivity implements EasyPermissions.Per
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GOOGLE_SIGN) {
             Task<GoogleSignInAccount>
@@ -163,6 +164,8 @@ public class HomeScreen extends AppCompatActivity implements EasyPermissions.Per
             } catch (ApiException e) {
                 e.printStackTrace();
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -171,22 +174,30 @@ public class HomeScreen extends AppCompatActivity implements EasyPermissions.Per
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("TAG", "Sign in success");
-                            loadingBar.dismiss();
-                            Toast.makeText(HomeScreen.this, "Welcome to TEDxUTHLarissa! ", Toast.LENGTH_SHORT).show();
-                            openMainActivity();
-                            finishAffinity();
-                        } else {
-                            Toast.makeText(HomeScreen.this, "Something went wrong... try again  ", Toast.LENGTH_SHORT).show();
-                            Log.d("TAG", "Sing in failed");
-                            loadingBar.dismiss();
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("TAG", "Sign in success");
+                        loadingBar.dismiss();
+                        Toast.makeText(HomeScreen.this, "Welcome to TEDxUTHLarissa! ", Toast.LENGTH_SHORT).show();
+                        openMainActivity();
+                        finishAffinity();
+                    } else {
+                        Toast.makeText(HomeScreen.this, "Something went wrong... try again  ", Toast.LENGTH_SHORT).show();
+                        Log.d("TAG", "Sing in failed");
+                        loadingBar.dismiss();
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 
     private void openMainActivity() {
@@ -195,11 +206,6 @@ public class HomeScreen extends AppCompatActivity implements EasyPermissions.Per
         finish();
     }
 
-    //    private void openQrCodeInsertionActivity() {
-//        Intent intent = new Intent(this, QRCodeInsertionActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

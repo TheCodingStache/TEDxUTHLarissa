@@ -24,6 +24,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -75,7 +77,7 @@ public class ProfileFragment extends Fragment implements SharedPreferences.OnSha
     private FirebaseUser mFirebaseUser;
     private FirebaseAuth mFirebaseAuth;
     static final int GOOGLE_SIGN_IN = 123;
-    Button generate;
+    private Button generate;
     DBHelper helper;
     ImageView ticket;
     String ticketText;
@@ -84,6 +86,8 @@ public class ProfileFragment extends Fragment implements SharedPreferences.OnSha
     QRGEncoder qrgEncoder;
     Bitmap bitmap;
     EditText ticketEditText;
+    private AccessTokenTracker mAccessTokenTracker;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     public ProfileFragment() {
     }
@@ -138,7 +142,12 @@ public class ProfileFragment extends Fragment implements SharedPreferences.OnSha
         generate.setVisibility(View.GONE);
         ticketEditText.setVisibility(View.GONE);
         ticket.setVisibility(View.GONE);
-        updateUI();
+        mAuthStateListener = firebaseAuth -> {
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            if (firebaseUser != null) {
+                updateUI();
+            }
+        };
         generate.setOnClickListener(v -> {
             String text = ticketEditText.getText().toString();
             try {
@@ -156,8 +165,21 @@ public class ProfileFragment extends Fragment implements SharedPreferences.OnSha
 
 
         });
-
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mAuthStateListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        }
     }
 
     private void storeImage(Bitmap image) {
@@ -221,13 +243,20 @@ public class ProfileFragment extends Fragment implements SharedPreferences.OnSha
     }
 
     private void facebookLogout() {
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
+        mAccessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if (currentAccessToken != null) {
+                    mFirebaseAuth.signOut();
+                    FirebaseAuth.getInstance().signOut();
+                    LoginManager.getInstance().logOut();
+                }
+            }
+        };
         Toast.makeText(getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
         Intent openHome = new Intent(getContext(), HomeScreen.class);
         startActivity(openHome);
         getActivity().finish();
-
     }
 
 
